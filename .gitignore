@@ -1,0 +1,4 @@
+# Stub + JSX
+node_modules/
+.DS_Store
+dist/
