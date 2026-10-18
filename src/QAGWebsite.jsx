@@ -235,7 +235,7 @@ const Hero = ({ go }) => (
     <div style={{ position:'absolute', width:500, height:500, borderRadius:'50%', background:'radial-gradient(circle, rgba(0,180,216,0.1) 0%, transparent 65%)', top:'50%', left:'50%', transform:'translate(-50%,-50%)', pointerEvents:'none', animationName:'glow-breathe', animationDuration:'8s', animationIterationCount:'infinite' }}/>
 
     <div style={{ position:'relative', zIndex:2, textAlign:'center', padding:'0 24px', maxWidth:960 }}>
-      <Eyebrow>Ripley & Ripley Research · Salineville, Ohio · ORCID 0009-0004-8370-3779</Eyebrow>
+      <Eyebrow>R&R Droids · Salineville, Ohio · ORCID 0009-0004-8370-3779</Eyebrow>
       <h1 className="hero-h1 fade-up" style={{
         fontFamily:'Cormorant Garamond,serif', fontWeight:700,
         fontSize:'clamp(52px,8.5vw,104px)', lineHeight:1.0,
@@ -394,7 +394,7 @@ const Evidence = () => (
       <Eyebrow>Empirical Validation</Eyebrow>
       <H2 style={{ fontSize:'clamp(32px,5vw,60px)', marginBottom:20 }}>175 Galaxies. One Law.</H2>
       <p style={{ fontSize:18, color:'#7080a0', lineHeight:1.85, maxWidth:720, marginBottom:56, fontFamily:'Inter,sans-serif' }}>
-        The AVI Law was applied to the entire SPARC database — 175 measured galaxy rotation curves. No custom dark matter halos per galaxy. No free parameters tuned individually. One universal mechanism, analytically derived.
+        The AVI Law was applied to the entire SPARC database — 175 measured galaxy rotation curves, 3,391 data points. Two fitted parameters per galaxy (v∞, r_aff) — no dark matter halos. One universal mechanism, tested head-to-head against Newton and MOND on identical data.
       </p>
 
       {/* Results table */}
@@ -402,17 +402,17 @@ const Evidence = () => (
         <table style={{ width:'100%', borderCollapse:'collapse', fontFamily:'Inter,sans-serif', fontSize:14 }}>
           <thead>
             <tr style={{ borderBottom:'2px solid rgba(0,180,216,0.3)' }}>
-              {['Criterion','ΛC DM (Standard)','MOND','QAG (This Work)'].map(h => (
+              {['Criterion','Newton (baryons only)','MOND','QAG (This Work)'].map(h => (
                 <th key={h} style={{ padding:'12px 16px', color:'#00b4d8', textAlign:'left', fontWeight:600, letterSpacing:1, fontSize:11, textTransform:'uppercase' }}>{h}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {[
-              ['Dark Matter Mechanism','~175 custom halos','Empirical mod.','Induced vacuum echo'],
-              ['Critical Constant a₀','Not applicable','Empirically fitted','Analytically derived from R.H.'],
-              ['Rotation Curve Fit','Custom per galaxy','Universal empirical','Universal from first principles'],
-              ['χ²_red (SPARC global)','~1.0–3.0','~1.0–2.0','≈ 0.888'],
+              ['Gravity model','Newtonian baryons','Modified dynamics','Induced vacuum echo'],
+              ['Fitted params / galaxy','1 (Υ★)','1 (Υ★)','3 (Υ★, v∞, r_aff)'],
+              ['Rotation Curve Fit','Baryons only','Universal (a₀ fixed)','Parametric per galaxy'],
+              ['χ²_red (SPARC, 175 gal)','616.74','56.55','5.55 (median 1.42)'],
               ['Hubble Tension (H₀)','4.85σ unresolved','Not addressed','Reduced to 2.99σ'],
               ['S₈ Tension','1.82σ unresolved','Not addressed','Reduced to 0.36σ'],
               ['New Particles Required','Yes (WIMPs/axions)','No','No'],
@@ -427,12 +427,17 @@ const Evidence = () => (
         </table>
       </div>
 
+      {/* Honest framing note */}
+      <p style={{ fontSize:13, color:'#5060a0', lineHeight:1.8, fontFamily:'Inter,sans-serif', maxWidth:720, margin:'0 0 48px', padding:'16px 20px', borderLeft:'3px solid rgba(0,180,216,0.4)', background:'rgba(0,180,216,0.04)' }}>
+        <strong style={{ color:'#8090b0' }}>Reading the numbers honestly:</strong> a reduced χ² of 1.0 means a perfect fit to the quoted errors. SPARC's published uncertainties cover measurement noise only — not distance, inclination, or mass-to-light systematics — so <em>no</em> model reaches 1.0 on this data. What matters is the head-to-head: same galaxies, same data, same errors. QAG wins 167 of 175 against MOND and 170 of 175 against Newton, with a global ΔBIC of 172,054. The median galaxy fits at 1.42.
+      </p>
+
       {/* Specific galaxy results */}
       <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(260px,1fr))', gap:24, marginBottom:48 }}>
         {[
-          { gal:'DDO 154', res:'χ²/ν = 0.13', detail:'Diffuse dwarf galaxy — historically impossible to fit. QAG outperforms ΛC DM by 6.6×. Affinity radius r_aff = 18.82 kpc.', hi:true },
-          { gal:'NGC 1560', res:'Δv = 2.22 km/s', detail:'Predicted 82.22 km/s vs observed 80.0 km/s at 8.0 kpc. Variance at 3.5 kpc: 0.0010 — near-zero scatter.', hi:false },
-          { gal:'NGC 3198', res:'χ²_red = 0.053', detail:'"Universal Harmony" classification. Near-perfect agreement across the full radial extent.', hi:true },
+          { gal:'DDO 154', res:'χ²_red = 11.52', detail:'Diffuse dwarf, 12 data points. QAG beats MOND (90.34) by 7.8× and Newton (5866) decisively. Affinity radius r_aff = 6.89 kpc.', hi:true },
+          { gal:'UGCA 444', res:'χ²_red = 0.06', detail:'Dwarf galaxy, 36 data points. Near-perfect QAG fit; MOND (2.02) trails by 33×. One of the cleanest validations in the sample.', hi:false },
+          { gal:'NGC 3198', res:'χ²_red = 1.25', detail:'Classic spiral, 43 data points. QAG beats MOND (14.18) by 11×. Near-unity fit across the full radial extent.', hi:true },
         ].map(g => (
           <div key={g.gal} className="card" style={{ padding:28, border:`1px solid ${g.hi ? 'rgba(0,180,216,0.3)' : 'rgba(255,255,255,0.06)'}`, background: g.hi ? 'rgba(0,180,216,0.05)' : 'rgba(255,255,255,0.02)' }}>
             <div style={{ fontFamily:'Inter,sans-serif', fontSize:11, letterSpacing:3, textTransform:'uppercase', color:'#00b4d8', marginBottom:8 }}>{g.gal}</div>
@@ -653,7 +658,7 @@ const Support = () => (
 
       <div style={{ textAlign:'center' }}>
         <p style={{ fontFamily:'Inter,sans-serif', fontSize:13, color:'#3a5070', margin:0 }}>
-          droiden.rr@gmail.com · Ripley & Ripley Research · Salineville, OH
+          droiden.rr@gmail.com · R&R Droids · Salineville, OH
         </p>
         <p style={{ fontFamily:'Cormorant Garamond,serif', fontStyle:'italic', fontSize:18, color:'#ffd16644', marginTop:12 }}>
           "The universe is not a mystery to be solved. It is a resonance to be joined."
@@ -671,7 +676,7 @@ const About = () => (
         <Eyebrow>The Researcher</Eyebrow>
         <H2 style={{ fontSize:42, marginBottom:20 }}>Rodney A. Ripley Jr.</H2>
         <p style={{ fontFamily:'Inter,sans-serif', fontSize:16, color:'#7080a0', lineHeight:1.85, marginBottom:20 }}>
-          Independent theoretical physicist. Sole proprietor of <strong style={{ color:'#d0d8e8' }}>R&R Droids</strong>. Principal Investigator at <strong style={{ color:'#d0d8e8' }}>Ripley & Ripley Research</strong>. Operating from Salineville, Ohio, entirely mobile-first on a Pixel 9A.
+          Independent theoretical physicist. Founder of <strong style={{ color:'#d0d8e8' }}>R&R Droids</strong>. Operating from Salineville, Ohio, entirely mobile-first on a Pixel 9A.
         </p>
         <p style={{ fontFamily:'Inter,sans-serif', fontSize:16, color:'#7080a0', lineHeight:1.85, marginBottom:32 }}>
           Author of the QAG framework, developer of the Affy: The Quantum Ego AI, the Chrono-Holographic Cipher, and the Zero-Point SAW Resonator. Prior contact with Klee Irwin at the Quantum Gravity Research Institute.
@@ -725,7 +730,7 @@ const Footer = ({ go }) => (
       QUANTUM AFFINITY GRAVITY
     </button>
     <p style={{ fontFamily:'Inter,sans-serif', fontSize:13, color:'#3a5070', margin:'0 0 12px' }}>
-      Ripley & Ripley Research · Salineville, Ohio · ORCID 0009-0004-8370-3779
+      R&R Droids · Salineville, Ohio · ORCID 0009-0004-8370-3779
     </p>
     <p style={{ fontFamily:'Cormorant Garamond,serif', fontStyle:'italic', fontSize:17, color:'rgba(255,209,102,0.3)', margin:'0 0 24px' }}>
       "Gravity is not a prison. It is an invitation."
