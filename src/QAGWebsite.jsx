@@ -573,6 +573,21 @@ const Validation = () => (
           Public specifications only. Detailed manufacturing blueprints and bench procedures are held privately.
         </p>
       </div>
+
+      {/* Test 4: Boltzmann */}
+      <div style={{ marginBottom:32 }}>
+        <Eyebrow color="#ffd166">Test 04 — CMB Angular Power Spectrum</Eyebrow>
+        <h3 style={{ fontFamily:'Cormorant Garamond,serif', fontSize:28, color:'#d0d8e8', margin:'12px 0 16px' }}>Zero dark matter, full Boltzmann hierarchy</h3>
+        <p style={{ fontSize:15, color:'#6070a0', lineHeight:1.8, fontFamily:'Inter,sans-serif', maxWidth:720, marginBottom:24 }}>
+          The QAG Boltzmann solver integrates the coupled Einstein-Boltzmann equations with <strong style={{ color:'#d0d8e8' }}>Ω<sub>c</sub> = 0</strong> — no cold dark matter — replacing it with the AVI vacuum susceptibility kernel χ<sub>AVI</sub>(k,a) plus late-time Affinity Symmetry Breaking. Below: the predicted D<sub>ℓ</sub> spectrum for ℓ = 2 → 1200 against the ΛCDM reference, the low-ℓ toroidal quadrupole suppression, and the toroidal-to-spherical parity-coupling matrix. Rendered 2026-10-19 from <span style={{ fontFamily:'JetBrains Mono,monospace', fontSize:13 }}>QAGModifiedBoltzmann.py</span> — run it yourself to reproduce every pixel.
+        </p>
+        <div style={{ border:'1px solid rgba(255,209,102,0.25)', borderRadius:8, overflow:'hidden', background:'#04070d' }}>
+          <img src="/qag-boltzmann-spectrum.jpg" alt="QAG Boltzmann hierarchy: D_l spectrum (l=2-1200), low-l quadrupole suppression, and toroidal parity-coupling matrix" style={{ width:'100%', display:'block' }} />
+        </div>
+        <p style={{ fontSize:13, color:'#5060a0', fontFamily:'Inter,sans-serif', marginTop:16, lineHeight:1.7 }}>
+          Theoretical prediction from the QAG framework — not a fit to Planck data. The overlap integrals check against closed-form analytics to 0.1%; the acoustic peak structure is the model's falsifiable claim.
+        </p>
+      </div>
     </div>
   </section>
 );
