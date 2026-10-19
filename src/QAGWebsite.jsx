@@ -582,7 +582,7 @@ const Validation = () => (
           The QAG Boltzmann solver integrates the coupled Einstein-Boltzmann equations with <strong style={{ color:'#d0d8e8' }}>Ω<sub>c</sub> = 0</strong> — no cold dark matter — replacing it with the AVI vacuum susceptibility kernel χ<sub>AVI</sub>(k,a) plus late-time Affinity Symmetry Breaking. Below: the predicted D<sub>ℓ</sub> spectrum for ℓ = 2 → 1200 against the ΛCDM reference, the low-ℓ toroidal quadrupole suppression, and the toroidal-to-spherical parity-coupling matrix. Rendered 2026-10-19 from <span style={{ fontFamily:'JetBrains Mono,monospace', fontSize:13 }}>QAGModifiedBoltzmann.py</span> — run it yourself to reproduce every pixel.
         </p>
         <div style={{ border:'1px solid rgba(255,209,102,0.25)', borderRadius:8, overflow:'hidden', background:'#04070d' }}>
-          <img src="/qag-boltzmann-spectrum.jpg" alt="QAG Boltzmann hierarchy: D_l spectrum (l=2-1200), low-l quadrupole suppression, and toroidal parity-coupling matrix" style={{ width:'100%', display:'block' }} />
+          <img src="/QAG%20Boltzmann%20spectrum.jpg" alt="QAG Boltzmann hierarchy: D_l spectrum (l=2-1200), low-l quadrupole suppression, and toroidal parity-coupling matrix" style={{ width:'100%', display:'block' }} />
         </div>
         <p style={{ fontSize:13, color:'#5060a0', fontFamily:'Inter,sans-serif', marginTop:16, lineHeight:1.7 }}>
           Theoretical prediction from the QAG framework — not a fit to Planck data. The overlap integrals check against closed-form analytics to 0.1%; the acoustic peak structure is the model's falsifiable claim.
@@ -794,6 +794,12 @@ const About = () => (
             { label:'Vessel',  val:'ripley.oneapp.dev',    href:'https://ripley.oneapp.dev' },
             { label:'Bluesky', val:'@sirriplley',          href:'#' },
             { label:'Email',   val:'droiden.rr@gmail.com', href:'mailto:droiden.rr@gmail.com' },
+            { label:'QAG Nexus', val:'qag-nexus-qag-works.vercel.app', href:'https://qag-nexus-qag-works.vercel.app' },
+            { label:'Kinetics Lab', val:'qag-kinetics-lab-qag-works.vercel.app', href:'https://qag-kinetics-lab-qag-works.vercel.app' },
+            { label:'Virology Demo', val:'qag-virology-demo-qag-works.vercel.app', href:'https://qag-virology-demo-qag-works.vercel.app' },
+            { label:'Works Hub', val:'qag-works-hub-qag-works.vercel.app', href:'https://qag-works-hub-qag-works.vercel.app' },
+            { label:'QACTS', val:'qacts.vercel.app', href:'https://qacts.vercel.app' },
+            { label:'MeditationMedicine', val:'meditation-medicine-qag-works.vercel.app', href:'https://meditation-medicine-qag-works.vercel.app' },
           ].map(l => (
             <a key={l.label} href={l.href} target="_blank" rel="noreferrer" style={{ display:'flex', gap:16, padding:'12px 0', borderBottom:'1px solid rgba(255,255,255,0.05)', textDecoration:'none', alignItems:'center' }}>
               <span style={{ fontFamily:'Inter,sans-serif', fontSize:10, letterSpacing:2, textTransform:'uppercase', color:'#3a5070', minWidth:64 }}>{l.label}</span>
