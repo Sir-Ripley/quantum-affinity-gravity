@@ -739,7 +739,7 @@ const Codex = () => (
           { title:'The QAG Rosetta Stone: Unifying the Cosmic Web with the Riemann Hypothesis', type:'Analysis', date:'Nov 2025', color:'#f97316', doi:null, url:null },
           { title:'Patent: QAG Computational Framework for Galactic Rotational Velocity Prediction', type:'Utility Patent', date:'Mar 2026', color:'#ffd166', doi:null, url:null },
           { title:'Patent: Phased-Array SAW Propulsion System via Hydrogen-Coupled Zero-Point Resonance', type:'Utility Patent', date:'Feb 2026', color:'#ffd166', doi:null, url:null },
-          { title:'The Universe is a Symphony: A QAG Primer', type:'Accessible Introduction', date:'Apr 2026', color:'#00b4d8', doi:null, url:'https://cosmo-analysis.replit.app' },
+          { title:'The Universe is a Symphony: A QAG Primer', type:'Accessible Introduction', date:'Apr 2026', color:'#00b4d8', doi:null, url:null },
           { title:'QAG Codex: Unified Field Theory for Energy Sovereignty and Interstellar Propulsion', type:'Applied Framework', date:'Feb 2026', color:'#a78bfa', doi:null, url:null },
           { title:'The Resonant Lexicon: A Student\'s Guide to Quantum Affinity Gravity', type:'Educational Guide', date:'2025', color:'#4ade80', doi:null, url:null },
         ].map((p,i) => (
@@ -766,8 +766,7 @@ const Codex = () => (
         {[
           { label:'GitHub: Sir-Ripley', url:'https://github.com/Sir-Ripley', color:'#8090b0' },
           { label:'ORCID: 0009-0004-8370-3779', url:'https://orcid.org/0009-0004-8370-3779', color:'#4ade80' },
-          { label:'Live Analysis Tool', url:'https://cosmo-analysis.replit.app', color:'#00b4d8' },
-          { label:'QAG Codex Site', url:'https://qag.tiiny.site', color:'#a78bfa' },
+          { label:'Live Analysis Tool', url:'https://qag-kinetics-lab.vercel.app', color:'#00b4d8' },
           { label:'R&R Command Vessel', url:'https://ripley.oneapp.dev', color:'#ffd166' },
         ].map(l => (
           <a key={l.label} href={l.url} target="_blank" rel="noreferrer" style={{ padding:'10px 20px', background:'rgba(255,255,255,0.03)', border:'1px solid rgba(255,255,255,0.1)', borderRadius:4, color:l.color, fontFamily:'Inter,sans-serif', fontSize:12, letterSpacing:1, fontWeight:500 }}>
@@ -797,9 +796,8 @@ const About = () => (
             { label:'ORCID',   val:'0009-0004-8370-3779', href:'https://orcid.org/0009-0004-8370-3779' },
             { label:'GitHub',  val:'Sir-Ripley',           href:'https://github.com/Sir-Ripley' },
             { label:'Preprint',val:'figshare.31871464',    href:'https://doi.org/10.6084/m9.figshare.31871464' },
-            { label:'Replit',  val:'cosmo-analysis.replit.app', href:'https://cosmo-analysis.replit.app' },
             { label:'Vessel',  val:'ripley.oneapp.dev',    href:'https://ripley.oneapp.dev' },
-            { label:'Bluesky', val:'@sirriplley',          href:'#' },
+            { label:'Bluesky', val:'misterbde.bsky.social', href:'https://bsky.app/profile/misterbde.bsky.social' },
             { label:'Email',   val:'droiden.rr@gmail.com', href:'mailto:droiden.rr@gmail.com' },
             { label:'QAG Nexus', val:'qag-nexus-qag-works.vercel.app', href:'https://qag-nexus-qag-works.vercel.app' },
             { label:'Kinetics Lab', val:'qag-kinetics-lab-qag-works.vercel.app', href:'https://qag-kinetics-lab-qag-works.vercel.app' },
