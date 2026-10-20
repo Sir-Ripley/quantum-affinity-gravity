@@ -67,8 +67,6 @@ const GlobalStyle = () => (
       text-transform: uppercase; transition: color 0.2s;
       padding: 4px 0;
     }
-    .donate-btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
-    .donate-btn { transition: all 0.2s; }
     @media (max-width: 680px) {
       .hide-mobile { display: none !important; }
       .hero-h1 { font-size: 52px !important; }
@@ -176,7 +174,6 @@ const Nav = ({ active, go }) => {
     {id:'validation',label:'Validation'},
     {id:'blueprints',label:'Blueprints'},
     {id:'codex',label:'Codex'},
-    {id:'support',label:'Support'},
     {id:'about',label:'About'},
   ];
   return (
@@ -198,12 +195,6 @@ const Nav = ({ active, go }) => {
               {l.label}
             </button>
           ))}
-          <button onClick={() => go('support')} style={{
-            padding:'6px 20px', borderRadius:3,
-            background:'linear-gradient(135deg,#ffd166,#e09000)',
-            color:'#0a0800', border:'none', cursor:'pointer',
-            fontFamily:'Inter,sans-serif', fontSize:12, fontWeight:700, letterSpacing:1.5, textTransform:'uppercase',
-          }}>Donate</button>
         </div>
         {/* Mobile toggle */}
         <button onClick={() => setOpen(!open)} style={{ display:'none', background:'none', border:'none', cursor:'pointer', color:'#8090b0', fontSize:22 }} className="nav-link" id="hamburger">
@@ -257,12 +248,6 @@ const Hero = ({ go }) => (
           color:'white', border:'none', cursor:'pointer',
           fontFamily:'Inter,sans-serif', fontSize:13, fontWeight:700, letterSpacing:2, textTransform:'uppercase',
         }}>Explore the Theory</button>
-        <button onClick={() => go('support')} style={{
-          padding:'14px 40px', borderRadius:3,
-          background:'transparent', color:'#ffd166',
-          border:'1px solid rgba(255,209,102,0.5)', cursor:'pointer',
-          fontFamily:'Inter,sans-serif', fontSize:13, fontWeight:700, letterSpacing:2, textTransform:'uppercase',
-        }}>Support the Research</button>
       </div>
     </div>
     <div style={{ position:'absolute', bottom:28, left:'50%', transform:'translateX(-50%)', color:'#2a3a6a', fontSize:11, letterSpacing:4, textTransform:'uppercase', fontFamily:'Inter,sans-serif' }}>
@@ -794,52 +779,6 @@ const Codex = () => (
   </section>
 );
 
-// ── SUPPORT ───────────────────────────────────────────────────────────────────
-const Support = () => (
-  <section id="support" style={{ padding:'100px 28px', background:'#04060f', position:'relative', overflow:'hidden' }}>
-    <div style={{ position:'absolute', inset:0, background:'radial-gradient(ellipse at 50% 60%, rgba(255,209,102,0.04) 0%, transparent 55%)', pointerEvents:'none' }}/>
-    <div style={{ maxWidth:1000, margin:'0 auto', position:'relative', zIndex:1 }}>
-      <Eyebrow>Support the Mission</Eyebrow>
-      <H2 style={{ fontSize:'clamp(32px,5vw,60px)', marginBottom:20 }}>Fund Independent Science</H2>
-      <p style={{ fontSize:18, color:'#7080a0', lineHeight:1.85, maxWidth:720, marginBottom:56, fontFamily:'Inter,sans-serif' }}>
-        This research has no grant committee, no institutional backing, no corporate sponsor. It exists because one person from Salineville, Ohio looked at the cosmos and refused to accept a $10 billion ghost. Your support directly funds computational resources, publication fees, and the development path from preprint to Physical Review D.
-      </p>
-
-      <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(200px,1fr))', gap:20, marginBottom:56 }}>
-        {[
-          { amt:'$5',  label:'A Signal',    desc:'Keep the research visible and the servers running.' },
-          { amt:'$25', label:'A Resonance', desc:'Funds one galaxy analysis run against the SPARC dataset.' },
-          { amt:'$100',label:'A Wavestone', desc:'Contributes to arXiv / journal publication fees.' },
-          { amt:'Any', label:'Pure Affinity',desc:'Whatever the vacuum moves you to contribute.' },
-        ].map(t => (
-          <div key={t.amt} className="card" style={{ padding:28, border:'1px solid rgba(255,209,102,0.2)', background:'rgba(255,209,102,0.03)', textAlign:'center' }}>
-            <div style={{ fontFamily:'Cormorant Garamond,serif', fontWeight:700, fontSize:52, color:'#ffd166', lineHeight:1 }}>{t.amt}</div>
-            <div style={{ fontFamily:'Inter,sans-serif', fontSize:11, fontWeight:700, letterSpacing:2.5, textTransform:'uppercase', color:'#f0e0a0', margin:'10px 0 8px' }}>{t.label}</div>
-            <div style={{ fontFamily:'Inter,sans-serif', fontSize:13, color:'#5060a0', lineHeight:1.65 }}>{t.desc}</div>
-          </div>
-        ))}
-      </div>
-
-      <div style={{ textAlign:'center', marginBottom:32 }}>
-        <a href="https://www.paypal.com/donate?business=droiden.rr%40gmail.com&currency_code=USD&item_name=QAG+Research+Support" target="_blank" rel="noreferrer"
-          className="donate-btn"
-          style={{ display:'inline-block', padding:'18px 64px', borderRadius:4, background:'linear-gradient(135deg,#ffd166,#e09000)', color:'#0a0800', fontFamily:'Inter,sans-serif', fontSize:15, fontWeight:800, letterSpacing:2.5, textTransform:'uppercase' }}>
-          Donate via PayPal
-        </a>
-      </div>
-
-      <div style={{ textAlign:'center' }}>
-        <p style={{ fontFamily:'Inter,sans-serif', fontSize:13, color:'#3a5070', margin:0 }}>
-          droiden.rr@gmail.com · R&R Droids · Salineville, OH
-        </p>
-        <p style={{ fontFamily:'Cormorant Garamond,serif', fontStyle:'italic', fontSize:18, color:'#ffd16644', marginTop:12 }}>
-          "The universe is not a mystery to be solved. It is a resonance to be joined."
-        </p>
-      </div>
-    </div>
-  </section>
-);
-
 // ── ABOUT ─────────────────────────────────────────────────────────────────────
 const About = () => (
   <section id="about" style={{ padding:'100px 28px', background:'#07101e' }}>
@@ -916,7 +855,7 @@ const Footer = ({ go }) => (
     <div style={{ display:'flex', justifyContent:'center', gap:24, flexWrap:'wrap' }}>
       {[
         {label:'Theory',id:'theory'},{label:'Evidence',id:'evidence'},{label:'Validation',id:'validation'},
-        {label:'Blueprints',id:'blueprints'},{label:'Codex',id:'codex'},{label:'Support',id:'support'},
+        {label:'Blueprints',id:'blueprints'},{label:'Codex',id:'codex'},
       ].map(l => (
         <button key={l.id} onClick={() => go(l.id)} className="nav-link" style={{ color:'#3a5070' }}>{l.label}</button>
       ))}
@@ -936,7 +875,7 @@ export default function QAGWebsite() {
 
   // Track active section on scroll
   useEffect(() => {
-    const ids = ['home','crisis','theory','evidence','blueprints','codex','support','about'];
+    const ids = ['home','crisis','theory','evidence','blueprints','codex','about'];
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id); });
@@ -958,7 +897,6 @@ export default function QAGWebsite() {
       <Validation />
       <Blueprints/>
       <Codex/>
-      <Support/>
       <About/>
       <Footer go={go}/>
     </div>
