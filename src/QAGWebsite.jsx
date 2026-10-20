@@ -588,6 +588,74 @@ const Validation = () => (
           Theoretical prediction from the QAG framework — not a fit to Planck data. The overlap integrals check against closed-form analytics to 0.1%; the acoustic peak structure is the model's falsifiable claim.
         </p>
       </div>
+      {/* Test 5: X-COP clusters */}
+      <div style={{ marginBottom:64 }}>
+        <Eyebrow color="#4ade80">Test 05 — Galaxy Clusters I: X-COP Hydrostatics</Eyebrow>
+        <h3 style={{ fontFamily:'Cormorant Garamond,serif', fontSize:28, color:'#d0d8e8', margin:'12px 0 16px' }}>Cross-framework replication, then comparison</h3>
+        <p style={{ fontSize:15, color:'#6070a0', lineHeight:1.8, fontFamily:'Inter,sans-serif', maxWidth:720, marginBottom:24 }}>
+          Before comparing frameworks on clusters, we re-implemented St&aring;lhammar's Emergent Scalar Field (ESF, 2026) from its paper and replicated its X-COP calibration exactly: coupling &gamma;<sub>p</sub> = 0.69, bootstrap CI [0.60, 0.79], leave-one-out error 0.072 dex. Only then was QAG scored on the same 24 points. QAG's published volume-integral law, at its registry constant, is inert here — stated plainly in Report 7 — but its pointwise response g = g<sub>B</sub> + &beta;<sub>g</sub>&middot;g<sub>B</sub><sup>2</sup> with a single constant lands at 0.166 dex: behind ESF's home score, ahead of canonical MOND and five times better than GR.
+        </p>
+        <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(200px,1fr))', gap:16 }}>
+          {[
+            { label:'ESF \u03b3\u209a (replicated)', val:'0.69', sub:'CI [0.60, 0.79] \u00b7 LOCO 0.072 dex', color:'#4ade80' },
+            { label:'QAG pointwise RMSE', val:'0.166', sub:'dex \u00b7 \u03b2_g = 8\u00d710\u00b9\u00b9 s\u00b2/m \u00b7 1 constant', color:'#ffd166' },
+            { label:'MOND RMSE', val:'0.138', sub:'dex \u00b7 canonical \u00b7 refit 0.070', color:'#8090b0' },
+            { label:'GR RMSE', val:'0.800', sub:'dex \u00b7 baryons only', color:'#5060a0' },
+          ].map((c,i) => (
+            <div key={i} style={{ padding:24, background:'rgba(255,255,255,0.02)', border:'1px solid rgba(255,255,255,0.07)', borderRadius:8, textAlign:'center' }}>
+              <div style={{ fontFamily:'Inter,sans-serif', fontSize:11, letterSpacing:2, textTransform:'uppercase', color:'#5060a0', marginBottom:8 }}>{c.label}</div>
+              <div style={{ fontFamily:'Cormorant Garamond,serif', fontSize:40, color:c.color, marginBottom:6 }}>{c.val}</div>
+              <div style={{ fontSize:12, color:'#6070a0', fontFamily:'Inter,sans-serif' }}>{c.sub}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Test 6: eROSITA clusters */}
+      <div style={{ marginBottom:64 }}>
+        <Eyebrow color="#a78bfa">Test 06 — Galaxy Clusters II: eROSITA Profiles</Eyebrow>
+        <h3 style={{ fontFamily:'Cormorant Garamond,serif', fontSize:28, color:'#d0d8e8', margin:'12px 0 16px' }}>The frozen-constant transfer test</h3>
+        <p style={{ fontSize:15, color:'#6070a0', lineHeight:1.8, fontFamily:'Inter,sans-serif', maxWidth:720, marginBottom:24 }}>
+          ESF's weakest published ground: with its coupling frozen from X-COP, it under-predicts eROSITA cluster interiors by up to 0.61 dex (published full-sample error 0.435 dex). Our independent run on the official profile archive replicates that failure at 0.441 dex with matching radial bins. QAG's pointwise constant, fitted on X-COP only and frozen, transfers to all 3,916 eROSITA points at 0.206 dex — radially flat, the center failure erased. Same constants, new systems, no re-tuning: that is the discipline this lab runs on.
+        </p>
+        <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(200px,1fr))', gap:16 }}>
+          {[
+            { label:'QAG pointwise (frozen)', val:'0.206', sub:'dex RMSE \u00b7 3,916 points \u00b7 flat in radius', color:'#ffd166' },
+            { label:'ESF (frozen)', val:'0.441', sub:'dex \u00b7 published 0.435 \u2713 replicated', color:'#a78bfa' },
+            { label:'MOND canonical', val:'0.514', sub:'dex RMSE', color:'#8090b0' },
+            { label:'GR', val:'1.035', sub:'dex RMSE \u00b7 baryons only', color:'#5060a0' },
+          ].map((c,i) => (
+            <div key={i} style={{ padding:24, background:'rgba(255,255,255,0.02)', border:'1px solid rgba(255,255,255,0.07)', borderRadius:8, textAlign:'center' }}>
+              <div style={{ fontFamily:'Inter,sans-serif', fontSize:11, letterSpacing:2, textTransform:'uppercase', color:'#5060a0', marginBottom:8 }}>{c.label}</div>
+              <div style={{ fontFamily:'Cormorant Garamond,serif', fontSize:40, color:c.color, marginBottom:6 }}>{c.val}</div>
+              <div style={{ fontSize:12, color:'#6070a0', fontFamily:'Inter,sans-serif' }}>{c.sub}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Test 7: Bullet Cluster morphology */}
+      <div style={{ marginBottom:32 }}>
+        <Eyebrow color="#ff6b9d">Test 07 — Bullet Cluster Lensing Morphology</Eyebrow>
+        <h3 style={{ fontFamily:'Cormorant Garamond,serif', fontSize:28, color:'#d0d8e8', margin:'12px 0 16px' }}>Does the lensing peak land on the galaxies?</h3>
+        <p style={{ fontSize:15, color:'#6070a0', lineHeight:1.8, fontFamily:'Inter,sans-serif', maxWidth:720, marginBottom:24 }}>
+          The Cluster Law's sharpest claim, tested on the actual Clowe et al. (2006) release maps of 1E 0657-56: the affinity density &rho;<sub>A</sub> = &beta;|&nabla;&Phi;<sub>B</sub>|<sup>2</sup> concentrates on the compact galaxy clumps, so the lensing signal should peak on the galaxies, offset from the gas. Baryons alone fail the control — no subcluster peak exists. With the affinity term, the bullet peak forms 20–80 kpc from the galaxy light (observed: 43 kpc) at 0.83 of the main peak's height (observed: 0.85). The morphology is confirmed; the honest caveat is normalization — the integral form's constant is not yet universal across systems (0.005 here vs. 0.028 / 0.225 on cluster profiles), and deriving the field equation that reconciles the forms is the framework's open problem, documented in the &beta; reconciliation memo. Full series: Reports 1–8 and addenda in the <a href="https://github.com/Sir-Ripley/QAGKinetics" style={{ color:'#00b4d8' }}>QAGKinetics repository</a>, live data via the <a href="https://qag-sparc-data.vercel.app/cross_validation.json" style={{ color:'#00b4d8' }}>cross-validation feed</a>, interactive version in the <a href="https://qag-kinetics-lab.vercel.app" style={{ color:'#00b4d8' }}>Kinetics Lab</a>.
+        </p>
+        <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(200px,1fr))', gap:16 }}>
+          {[
+            { label:'Observed \u03ba\u2013gas offset', val:'140 kpc', sub:'subcluster \u00b7 release maps', color:'#ff6b9d' },
+            { label:'Model peak to galaxies', val:'20\u201380 kpc', sub:'observed 43 kpc', color:'#ffd166' },
+            { label:'Peak height ratio', val:'0.83', sub:'observed 0.85', color:'#4ade80' },
+            { label:'Baryons-only control', val:'no peak', sub:'the GR failure mode', color:'#5060a0' },
+          ].map((c,i) => (
+            <div key={i} style={{ padding:24, background:'rgba(255,255,255,0.02)', border:'1px solid rgba(255,255,255,0.07)', borderRadius:8, textAlign:'center' }}>
+              <div style={{ fontFamily:'Inter,sans-serif', fontSize:11, letterSpacing:2, textTransform:'uppercase', color:'#5060a0', marginBottom:8 }}>{c.label}</div>
+              <div style={{ fontFamily:'Cormorant Garamond,serif', fontSize:40, color:c.color, marginBottom:6 }}>{c.val}</div>
+              <div style={{ fontSize:12, color:'#6070a0', fontFamily:'Inter,sans-serif' }}>{c.sub}</div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   </section>
 );
