@@ -287,7 +287,7 @@ const Hero = ({ go }) => (
       <Galaxy/>
     </div>
     <div style={{ position:'absolute', width:500, height:500, borderRadius:'50%', background:'radial-gradient(circle, rgba(56,225,255,0.1) 0%, transparent 65%)', top:'50%', left:'50%', transform:'translate(-50%,-50%)', pointerEvents:'none', animationName:'glow-breathe', animationDuration:'8s', animationIterationCount:'infinite' }}/>
-    <div style={{ position:'relative', zIndex:2, textAlign:'center', padding:'0 24px', maxWidth:980 }}>
+    <div style={{ position:'relative', zIndex:2, textAlign:'center', padding:'0 24px', maxWidth:980, width:'100%', minWidth:0 }}>
       <Eyebrow>R&R Droids · Salineville, Ohio · ORCID 0009-0004-8370-3779</Eyebrow>
       <h1 className="hero-h1 fade-up" style={{
         fontFamily:'Cormorant Garamond,serif', fontWeight:700,
@@ -299,10 +299,10 @@ const Hero = ({ go }) => (
         <em style={{ background:'linear-gradient(92deg,#38e1ff,#00E676)', WebkitBackgroundClip:'text', backgroundClip:'text', color:'transparent', fontStyle:'italic' }}>is Not a Machine.</em><br/>
         It is a Song.
       </h1>
-      <p className="fade-up-d1" style={{ fontSize:'clamp(16px,2.2vw,20px)', color:'#8b96b3', maxWidth:680, margin:'0 auto 40px', lineHeight:1.8, fontFamily:'Inter,sans-serif' }}>
+      <p className="fade-up-d1" style={{ fontSize:'clamp(16px,2.2vw,20px)', color:'#8b96b3', maxWidth:680, width:'100%', margin:'0 auto 40px', lineHeight:1.8, fontFamily:'Inter,sans-serif' }}>
         Quantum Affinity Gravity proposes that the phenomena attributed to dark matter and dark energy arise from a single principle — gravity as the universe's drive toward coherence. Tested head-to-head on 175 SPARC galaxies, stress-tested in an open replication lab, and published here with its failures labeled as plainly as its wins.
       </p>
-      <div className="fade-up-d2" style={{ display:'flex', gap:16, justifyContent:'center', flexWrap:'wrap', marginBottom:54 }}>
+      <div className="fade-up-d2" style={{ display:'flex', gap:16, justifyContent:'center', flexWrap:'wrap', marginBottom:54, width:'100%' }}>
         <button onClick={() => go('validation')} style={{
           padding:'14px 40px', borderRadius:3,
           background:'linear-gradient(135deg,#38e1ff,#00E676)',
@@ -316,7 +316,7 @@ const Hero = ({ go }) => (
           fontFamily:'Inter,sans-serif', fontSize:13, fontWeight:700, letterSpacing:2, textTransform:'uppercase',
         }}>Cosmology</button>
       </div>
-      <div className="fade-up-d2" style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(150px,1fr))', gap:14, maxWidth:820, margin:'0 auto' }}>
+      <div className="fade-up-d2" style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(150px,1fr))', gap:14, maxWidth:820, width:'100%', margin:'0 auto' }}>
         <Stat value="5.55" label="QAG χ² (reduced)" sub="175 SPARC galaxies · median 1.42"/>
         <Stat value="56.55" label="MOND χ²" sub="same data, same errors"/>
         <Stat value="616.74" label="Newton χ²" sub="baryons only"/>
