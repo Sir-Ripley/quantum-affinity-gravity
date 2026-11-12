@@ -197,9 +197,21 @@ const NAVLINKS = [
   {id:'publications',label:'Publications'},
   {id:'about',label:'About'},
 ];
+// ── Site pages (static pages + fleet subdomains) ──────────────────────────
+const SITELINKS = [
+  {label:'About Us', href:'/about/', desc:'R&R Droids and the QAG programme'},
+  {label:'Site Map', href:'/sitemap/', desc:'Every page and service, with descriptions'},
+  {label:'Tools', href:'/tools/', desc:'All utilities in one place'},
+  {label:'Research Archive', href:'https://docs.quantumaffinitygravity.com/', desc:'Preprint, documents, notebooks, validation'},
+  {label:'Data API', href:'https://api.quantumaffinitygravity.com/', desc:'One front door for all the data APIs'},
+  {label:'Fleet Status', href:'https://status.quantumaffinitygravity.com/', desc:'Live health of every service'},
+  {label:'Terms of Service', href:'/terms/', desc:'How the sites may be used'},
+  {label:'Privacy Policy', href:'/privacy/', desc:'What we collect (almost nothing)'},
+];
 const Nav = ({ active, go }) => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [drop, setDrop] = useState(false);
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 60);
     window.addEventListener('scroll', h);
@@ -217,12 +229,27 @@ const Nav = ({ active, go }) => {
         <button onClick={() => go('home')} style={{ background:'none', border:'none', cursor:'pointer', fontFamily:'Cormorant Garamond,serif', fontSize:22, fontWeight:700, color:'#ffd166', letterSpacing:3 }}>
           QAG
         </button>
-        <div className="hide-mobile" style={{ display:'flex', gap:24 }}>
+        <div className="hide-mobile" style={{ display:'flex', gap:24, alignItems:'center' }}>
           {NAVLINKS.map(l => (
             <button key={l.id} onClick={() => go(l.id)} className="nav-link" style={{ color: active===l.id ? '#00b4d8' : '#6070a0' }}>
               {l.label}
             </button>
           ))}
+          <div style={{ position:'relative' }}>
+            <button onClick={() => setDrop(!drop)} className="nav-link" style={{ color: drop ? '#00b4d8' : '#6070a0' }}>
+              Site {drop ? '▴' : '▾'}
+            </button>
+            {drop && (
+              <div style={{ position:'absolute', top:'calc(100% + 14px)', right:0, minWidth:300, background:'rgba(4,6,15,0.98)', border:'1px solid rgba(0,180,216,0.25)', borderRadius:12, padding:'10px 0', boxShadow:'0 18px 40px rgba(0,0,0,0.55)', zIndex:300 }}>
+                {SITELINKS.map(s => (
+                  <a key={s.href} href={s.href} onClick={() => setDrop(false)} style={{ display:'block', padding:'9px 18px', textDecoration:'none', color:'#c6d2e2' }}>
+                    <span style={{ display:'block', fontFamily:'Inter,sans-serif', fontSize:14, fontWeight:600, color:'#e9f4f8' }}>{s.label}</span>
+                    <span style={{ display:'block', fontFamily:'Inter,sans-serif', fontSize:12, color:'#6070a0' }}>{s.desc}</span>
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
         <button onClick={() => setOpen(!open)} style={{ background:'none', border:'none', cursor:'pointer', color:'#8090b0', fontSize:22 }} className="nav-link">
           {open ? '✕' : '☰'}
@@ -234,6 +261,12 @@ const Nav = ({ active, go }) => {
             <button key={l.id} onClick={() => { go(l.id); setOpen(false); }} className="nav-link" style={{ color:'#8090b0', textAlign:'left' }}>
               {l.label}
             </button>
+          ))}
+          <div style={{ borderTop:'1px solid rgba(0,180,216,0.15)', paddingTop:14, fontFamily:'Inter,sans-serif', fontSize:11, letterSpacing:2, textTransform:'uppercase', color:'#4a6080' }}>Site</div>
+          {SITELINKS.map(s => (
+            <a key={s.href} href={s.href} onClick={() => setOpen(false)} style={{ textDecoration:'none', color:'#8090b0', fontFamily:'Inter,sans-serif', fontSize:15 }}>
+              {s.label} <span style={{ color:'#4a6080', fontSize:12 }}>— {s.desc}</span>
+            </a>
           ))}
         </div>
       )}
@@ -562,16 +595,23 @@ const About = () => (
 // ── FOOTER ────────────────────────────────────────────────────────────────────
 const Footer = () => (
   <footer style={{ background:'#04060f', borderTop:'1px solid rgba(0,180,216,0.15)', padding:'44px 28px' }}>
-    <div style={{ maxWidth:1100, margin:'0 auto', display:'flex', justifyContent:'space-between', flexWrap:'wrap', gap:20, alignItems:'center' }}>
-      <div>
-        <div style={{ fontFamily:'Cormorant Garamond,serif', fontSize:20, fontWeight:700, color:'#ffd166', letterSpacing:2 }}>QAG</div>
-        <div style={{ fontFamily:'Inter,sans-serif', fontSize:12, color:'#4a6080', marginTop:6 }}>
-          Quantum Affinity Gravity · R&R Droids · Salineville, Ohio
-        </div>
+    <div style={{ maxWidth:1100, margin:'0 auto' }}>
+      <div style={{ display:'flex', flexWrap:'wrap', gap:10, marginBottom:26 }}>
+        {SITELINKS.map(s => (
+          <a key={s.href} href={s.href} style={{ fontFamily:'Inter,sans-serif', fontSize:13, color:'#8090b0', textDecoration:'none', border:'1px solid rgba(0,180,216,0.18)', borderRadius:999, padding:'6px 14px' }}>{s.label}</a>
+        ))}
       </div>
-      <div style={{ fontFamily:'Inter,sans-serif', fontSize:12, color:'#4a6080', lineHeight:1.9, textAlign:'right' }}>
-        <div>All QAG figures are the team's own fits, not independently validated.</div>
-        <div>Portal rebuilt November 2026 from the canonical research record.</div>
+      <div style={{ display:'flex', justifyContent:'space-between', flexWrap:'wrap', gap:20, alignItems:'center' }}>
+        <div>
+          <div style={{ fontFamily:'Cormorant Garamond,serif', fontSize:20, fontWeight:700, color:'#ffd166', letterSpacing:2 }}>QAG</div>
+          <div style={{ fontFamily:'Inter,sans-serif', fontSize:12, color:'#4a6080', marginTop:6 }}>
+            Quantum Affinity Gravity · R&R Droids · Salineville, Ohio
+          </div>
+        </div>
+        <div style={{ fontFamily:'Inter,sans-serif', fontSize:12, color:'#4a6080', lineHeight:1.9, textAlign:'right' }}>
+          <div>All QAG figures are the team's own fits, not independently validated.</div>
+          <div>Portal rebuilt November 2026 from the canonical research record.</div>
+        </div>
       </div>
     </div>
   </footer>
