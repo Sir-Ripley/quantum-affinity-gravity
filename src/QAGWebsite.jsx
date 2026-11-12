@@ -84,6 +84,7 @@ const GlobalStyle = () => (
     @media (max-width: 680px) {
       .hide-mobile { display: none !important; }
       .hero-h1 { font-size: 40px !important; }
+      .eyebrow { font-size: 10px !important; letter-spacing: 2px !important; line-height: 2 !important; }
       .eq-block { font-size: 13px; padding: 16px 14px; line-height: 1.8; }
       .reg-table td.val, .reg-table td.sym { white-space: normal; }
       .reg-table { display: block; overflow-x: auto; }
@@ -93,7 +94,7 @@ const GlobalStyle = () => (
 
 // ── Shared atoms ──────────────────────────────────────────────────────────────
 const Eyebrow = ({ children, color = '#38e1ff' }) => (
-  <p style={{ fontFamily:'Inter,sans-serif', fontSize:11, fontWeight:700, letterSpacing:4, textTransform:'uppercase', color, marginBottom:16, marginTop:0 }}>
+  <p className="eyebrow" style={{ fontFamily:'Inter,sans-serif', fontSize:11, fontWeight:700, letterSpacing:4, textTransform:'uppercase', color, marginBottom:16, marginTop:0, lineHeight:1.9 }}>
     {children}
   </p>
 );
@@ -281,7 +282,7 @@ const Nav = ({ active, go }) => {
 
 // ── HERO ──────────────────────────────────────────────────────────────────────
 const Hero = ({ go }) => (
-  <section id="home" style={{ position:'relative', minHeight:'100vh', display:'flex', alignItems:'center', justifyContent:'center', overflow:'hidden', background:'#05070f' }}>
+  <section id="home" style={{ position:'relative', minHeight:'100vh', display:'flex', alignItems:'center', justifyContent:'center', overflow:'hidden', background:'#05070f', paddingTop:96, paddingBottom:64 }}>
     <Stars n={220}/>
     <div style={{ position:'absolute', width:'82vmin', height:'82vmin', top:'50%', left:'50%', transform:'translate(-50%,-50%)', animationName:'spiral-drift', animationDuration:'130s', animationTimingFunction:'linear', animationIterationCount:'infinite', pointerEvents:'none' }}>
       <Galaxy/>
