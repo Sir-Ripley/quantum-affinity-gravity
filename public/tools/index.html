@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tools — Quantum Affinity Gravity · R&R Droids</title>
+<meta name="description" content="All the Quantum Affinity Gravity utilities in one place: data, research, fleet, crypto and AI tools under quantumaffinitygravity.com.">
+<style>
+:root{--bg:#05070f;--card:#0a1226;--line:#1e2a4a;--txt:#dbe4ff;--dim:#8b96b3;--cyan:#38e1ff;--green:#00E676;--amber:#FFAB00;--violet:#9d7bff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1000px 480px at 50% -8%,#0d1a2e 0%,var(--bg) 60%) fixed,var(--bg);color:var(--txt);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.65}
+.wrap{max-width:960px;margin:0 auto;padding:0 1.1rem}
+header{padding:2.6rem 0 1.2rem;text-align:center}
+header h1{font-size:clamp(1.6rem,5vw,2.3rem);background:linear-gradient(92deg,var(--cyan),var(--green));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:#c6d2e2;max-width:660px;margin:.7rem auto}
+.badge{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.08em;border:1px solid var(--line);border-radius:999px;padding:.25rem .7rem;color:var(--dim);margin:.2rem}
+h2{font-size:1.15rem;margin:2.2rem 0 .8rem;color:var(--cyan)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:.9rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1.1rem 1.2rem}
+.card h3{font-size:1.02rem;margin-bottom:.25rem}
+.card h3 a{color:var(--txt);text-decoration:none}
+.card h3 a:hover{color:var(--cyan)}
+.card p{color:#c6d2e2;font-size:.92rem}
+.card .meta{color:var(--dim);font-size:.82rem;margin-top:.4rem}
+a{color:var(--cyan);text-decoration:none}
+a:hover{text-decoration:underline}
+.mut{color:var(--dim);font-size:.88rem}
+footer{color:var(--dim);font-size:.82rem;text-align:center;padding:2.2rem 0}
+.lookup{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1.2rem}
+.lookup input{width:100%;padding:.7rem .9rem;border-radius:8px;border:1px solid var(--line);background:#0a1424;color:var(--txt);font-size:1rem;margin:.5rem 0}
+.lookup button{background:var(--cyan);color:#04121a;border:none;border-radius:8px;padding:.6rem 1.2rem;font-weight:700;cursor:pointer;font-size:.95rem}
+.lookup button:hover{opacity:.9}
+#result{margin-top:1rem;font-size:.93rem}
+#result table{width:100%;border-collapse:collapse;margin-top:.5rem}
+#result td,#result th{padding:.4rem .6rem;border-bottom:1px solid var(--line);text-align:left;font-size:.9rem}
+#result th{color:var(--dim);font-size:.78rem;text-transform:uppercase;letter-spacing:.05em}
+.num{font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>Tools</h1>
+<p class="sub">All the Quantum Affinity Gravity utilities in one place — data,
+research, fleet, crypto and AI. Every tool below lives under
+<strong>quantumaffinitygravity.com</strong>.</p>
+<div>
+<span class="badge">One domain</span>
+<span class="badge">Free for research use</span>
+</div>
+</header>
+
+<h2>SPARC galaxy lookup</h2>
+<div class="lookup">
+<p>Type a galaxy name (e.g. <strong>DDO 154</strong>, <strong>NGC 3198</strong>,
+<strong>NGC 2403</strong>) to see its QAG / MOND / Newton fit straight from the
+data API.</p>
+<input id="q" type="text" placeholder="Galaxy name — e.g. DDO 154" autocomplete="off">
+<button id="go">Look up</button>
+<div id="result"></div>
+</div>
+
+<h2>Research</h2>
+<div class="grid">
+<div class="card"><h3><a href="https://quantumaffinitygravity.com/">QAG Portal</a></h3><p>The main site — framework, Validation Lab, SPARC v3.0 results.</p><p class="meta">quantumaffinitygravity.com</p></div>
+<div class="card"><h3><a href="https://docs.quantumaffinitygravity.com/">Research Archive</a></h3><p>Preprint, core documents, notebooks, validation series.</p><p class="meta">docs.quantumaffinitygravity.com</p></div>
+<div class="card"><h3><a href="https://qag-kinetics-lab.quantumaffinitygravity.com/">Kinetics Lab</a></h3><p>Rotation-curve explorer, Bullet Cluster, Abell 520, cosmology.</p><p class="meta">qag-kinetics-lab</p></div>
+<div class="card"><h3><a href="https://qag-nexus.quantumaffinitygravity.com/">Nexus</a></h3><p>Educational platform for QAG — lessons, courses, progress.</p><p class="meta">qag-nexus</p></div>
+</div>
+
+<h2>Data &amp; APIs</h2>
+<div class="grid">
+<div class="card"><h3><a href="https://api.quantumaffinitygravity.com/">API front door</a></h3><p>One domain for every API: SPARC, Kinetics, datasets, v1 Postgres API.</p><p class="meta">api.quantumaffinitygravity.com</p></div>
+<div class="card"><h3><a href="https://qag-sparc-data.quantumaffinitygravity.com/">SPARC Data</a></h3><p>Canonical SPARC v3.0 dataset — 175 galaxies, 3,391 points.</p><p class="meta">qag-sparc-data</p></div>
+<div class="card"><h3><a href="https://qag-data.quantumaffinitygravity.com/">QAG Data</a></h3><p>Shared research datasets — virology, carbon-capture, QAG.</p><p class="meta">qag-data</p></div>
+</div>
+
+<h2>Fleet</h2>
+<div class="grid">
+<div class="card"><h3><a href="https://status.quantumaffinitygravity.com/">Fleet Status</a></h3><p>Live health of every service in the fleet, checked in your browser.</p><p class="meta">status.quantumaffinitygravity.com</p></div>
+<div class="card"><h3><a href="https://qag-works-hub.quantumaffinitygravity.com/">Works Hub</a></h3><p>The portfolio hub — every project in one place.</p><p class="meta">qag-works-hub</p></div>
+<div class="card"><h3><a href="https://qag-virology.quantumaffinitygravity.com/">Virology</a></h3><p>Quantum virology research platform.</p><p class="meta">qag-virology</p></div>
+<div class="card"><h3><a href="https://qag-carbon-capture.quantumaffinitygravity.com/">Carbon Capture</a></h3><p>Carbon-capture research and vectors.</p><p class="meta">qag-carbon-capture</p></div>
+</div>
+
+<h2>Crypto &amp; AI</h2>
+<div class="grid">
+<div class="card"><h3><a href="https://qacts.quantumaffinitygravity.com/">QACTS</a></h3><p>Crypto recovery + wallet dashboard, monitoring and AI tools.</p><p class="meta">qacts</p></div>
+<div class="card"><h3><a href="https://symbiote-cloud.quantumaffinitygravity.com/">Crypto Symbiote Cloud</a></h3><p>Mining companion — telemetry, status and remote commands.</p><p class="meta">symbiote-cloud</p></div>
+<div class="card"><h3><a href="https://aestheria.quantumaffinitygravity.com/">Aestheria</a></h3><p>The senses — online grounding, packets and self-prompt loop.</p><p class="meta">aestheria</p></div>
+<div class="card"><h3><a href="https://meditation-medicine.quantumaffinitygravity.com/">Meditation Medicine</a></h3><p>Meditation + medicine research.</p><p class="meta">meditation-medicine</p></div>
+</div>
+
+<footer>
+Tools · Quantum Affinity Gravity · R&amp;R Droids · Rodney A. Ripley Jr.<br>
+<span class="mut">All QAG figures are the team's own fits, not independently validated.</span>
+</footer>
+</div>
+
+<script>
+const API = "https://api.quantumaffinitygravity.com/sparc/galaxies175.full.json";
+let cache = null;
+
+async function load() {
+  if (cache) return cache;
+  const res = await fetch(API);
+  cache = await res.json();
+  return cache;
+}
+
+function render(g) {
+  const r = document.getElementById("result");
+  if (!g) {
+    r.innerHTML = "<p class='mut'>No galaxy matched that name. Try e.g. DDO 154, NGC 3198, NGC 2403, UGC 128.</p>";
+    return;
+  }
+  const rows = [
+    ["v_inf", (g.v_inf ?? "—") + " km/s"],
+    ["r_aff", (g.r_aff ?? "—") + " kpc"],
+    ["QAG red-χ²", g.qag_red ?? "—"],
+    ["MOND red-χ²", g.mond_red ?? "—"],
+    ["Newton red-χ²", g.newt_red ?? "—"],
+    ["QAG RMS", g.qag_rms ?? "—"],
+    ["Points", (g.pts ? g.pts.length : g.n_points) ?? "—"],
+  ];
+  r.innerHTML = "<h3 style='margin-bottom:.4rem'>" + g.name + "</h3>" +
+    "<table>" + rows.map(([k, v]) => "<tr><th>" + k + "</th><td class='num'>" + v + "</td></tr>").join("") + "</table>" +
+    "<p class='mut' style='margin-top:.6rem'>Full curve: <a href='https://api.quantumaffinitygravity.com/sparc/galaxies175.full.json'>galaxies175.full.json</a> · " +
+    "<a href='https://qag-kinetics-lab.quantumaffinitygravity.com/'>open in Kinetics Lab</a></p>";
+}
+
+async function lookup() {
+  const q = document.getElementById("q").value.trim().toLowerCase();
+  const r = document.getElementById("result");
+  if (!q) { r.innerHTML = ""; return; }
+  r.innerHTML = "<p class='mut'>Loading…</p>";
+  try {
+    const data = await load();
+    const list = data.galaxies || data;
+    const norm = s => (s || "").toLowerCase().replace(/[\s_]+/g, "");
+    const g = list.find(x => norm(x.name) === norm(q) || norm(x.name).includes(norm(q)));
+    render(g || null);
+  } catch (e) {
+    r.innerHTML = "<p class='mut'>Could not reach the data API right now — try again in a moment.</p>";
+  }
+}
+
+document.getElementById("go").addEventListener("click", lookup);
+document.getElementById("q").addEventListener("keydown", e => { if (e.key === "Enter") lookup(); });
+</script>
+</body>
+</html>
