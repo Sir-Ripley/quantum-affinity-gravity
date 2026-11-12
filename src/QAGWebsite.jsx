@@ -8,9 +8,10 @@ const GlobalStyle = () => (
   <style>{`
     @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { margin: 0; background: #04060f; overflow-x: hidden; }
-    a { text-decoration: none; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body { margin: 0; background: #05070f; overflow-x: hidden; }
+    img, svg, video, canvas { max-width: 100%; }
+    a { text-decoration: none; overflow-wrap: break-word; }
     @keyframes twinkle {
       0%,100% { opacity: 1; transform: scale(1); }
       50%      { opacity: 0.2; transform: scale(0.6); }
@@ -20,8 +21,8 @@ const GlobalStyle = () => (
       to   { transform: rotate(360deg); }
     }
     @keyframes glow-breathe {
-      0%,100% { box-shadow: 0 0 80px rgba(0,180,216,0.12); }
-      50%      { box-shadow: 0 0 140px rgba(0,180,216,0.28); }
+      0%,100% { box-shadow: 0 0 80px rgba(56,225,255,0.12); }
+      50%      { box-shadow: 0 0 140px rgba(56,225,255,0.28); }
     }
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(28px); }
@@ -31,22 +32,24 @@ const GlobalStyle = () => (
     .fade-up-d1 { animation: fadeUp 0.9s 0.15s ease both; }
     .fade-up-d2 { animation: fadeUp 0.9s 0.3s ease both; }
     .eq-block {
-      background: rgba(0,180,216,0.05);
-      border: 1px solid rgba(0,180,216,0.22);
-      border-left: 3px solid #00b4d8;
+      background: rgba(56,225,255,0.05);
+      border: 1px solid rgba(56,225,255,0.22);
+      border-left: 3px solid #38e1ff;
       border-radius: 6px;
       padding: 20px 28px;
       margin: 24px 0;
       font-family: 'JetBrains Mono', monospace;
       font-size: 16px;
-      color: #ffd166;
+      color: #38e1ff;
       text-align: center;
       line-height: 2;
+      overflow-wrap: break-word;
+      word-break: break-word;
     }
     .eq-note {
       font-family: Inter, sans-serif;
       font-size: 12px;
-      color: #4a6080;
+      color: #8b96b3;
       text-align: center;
       margin-top: 8px;
       letter-spacing: 0.5px;
@@ -67,33 +70,35 @@ const GlobalStyle = () => (
     .reg-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
     .reg-table th {
       text-align: left; font-family: Inter, sans-serif; font-size: 10.5px;
-      letter-spacing: 2px; text-transform: uppercase; color: #4a6080;
-      padding: 10px 14px; border-bottom: 1px solid rgba(0,180,216,0.25);
+      letter-spacing: 2px; text-transform: uppercase; color: #8b96b3;
+      padding: 10px 14px; border-bottom: 1px solid rgba(56,225,255,0.25);
     }
     .reg-table td {
       padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.05);
-      color: #a8b4cc; vertical-align: top; line-height: 1.55;
+      color: #c6d2e2; vertical-align: top; line-height: 1.55;
     }
-    .reg-table td.sym { font-family: 'JetBrains Mono', monospace; color: #ffd166; white-space: nowrap; }
-    .reg-table td.val { font-family: 'JetBrains Mono', monospace; color: #d0d8e8; white-space: nowrap; }
+    .reg-table td.sym { font-family: 'JetBrains Mono', monospace; color: #38e1ff; white-space: nowrap; }
+    .reg-table td.val { font-family: 'JetBrains Mono', monospace; color: #dbe4ff; white-space: nowrap; }
     .prog-card { transition: border-color 0.25s, transform 0.25s; }
-    .prog-card:hover { border-color: rgba(0,180,216,0.45) !important; transform: translateY(-3px); }
+    .prog-card:hover { border-color: rgba(56,225,255,0.45) !important; transform: translateY(-3px); }
     @media (max-width: 680px) {
       .hide-mobile { display: none !important; }
-      .hero-h1 { font-size: 52px !important; }
+      .hero-h1 { font-size: 40px !important; }
+      .eq-block { font-size: 13px; padding: 16px 14px; line-height: 1.8; }
       .reg-table td.val, .reg-table td.sym { white-space: normal; }
+      .reg-table { display: block; overflow-x: auto; }
     }
   `}</style>
 );
 
 // ── Shared atoms ──────────────────────────────────────────────────────────────
-const Eyebrow = ({ children, color = '#00b4d8' }) => (
+const Eyebrow = ({ children, color = '#38e1ff' }) => (
   <p style={{ fontFamily:'Inter,sans-serif', fontSize:11, fontWeight:700, letterSpacing:4, textTransform:'uppercase', color, marginBottom:16, marginTop:0 }}>
     {children}
   </p>
 );
 const H2 = ({ children, style }) => (
-  <h2 style={{ fontFamily:'Cormorant Garamond,serif', fontWeight:700, color:'#ffd166', lineHeight:1.1, fontSize:'clamp(32px,4.5vw,46px)', margin:'0 0 20px', ...style }}>{children}</h2>
+  <h2 style={{ fontFamily:'Cormorant Garamond,serif', fontWeight:700, background:'linear-gradient(92deg,#38e1ff,#00E676)', WebkitBackgroundClip:'text', backgroundClip:'text', color:'transparent', lineHeight:1.1, fontSize:'clamp(32px,4.5vw,46px)', margin:'0 0 20px', ...style }}>{children}</h2>
 );
 const Eq = ({ children, note }) => (
   <div>
@@ -101,24 +106,24 @@ const Eq = ({ children, note }) => (
     {note && <p className="eq-note">{note}</p>}
   </div>
 );
-const Tag = ({ children, color='#00b4d8' }) => (
+const Tag = ({ children, color='#38e1ff' }) => (
   <span style={{ fontSize:10, fontWeight:700, letterSpacing:1.5, textTransform:'uppercase', color, padding:'3px 10px', border:`1px solid ${color}44`, borderRadius:20, background:`${color}11`, whiteSpace:'nowrap' }}>
     {children}
   </span>
 );
 const P = ({ children, style }) => (
-  <p style={{ fontFamily:'Inter,sans-serif', fontSize:15.5, lineHeight:1.85, color:'#8b98b5', margin:'0 0 18px', ...style }}>{children}</p>
+  <p style={{ fontFamily:'Inter,sans-serif', fontSize:15.5, lineHeight:1.85, color:'#c6d2e2', margin:'0 0 18px', ...style }}>{children}</p>
 );
-const Strong = ({ children }) => <strong style={{ color:'#d0d8e8' }}>{children}</strong>;
+const Strong = ({ children }) => <strong style={{ color:'#dbe4ff' }}>{children}</strong>;
 const Stat = ({ value, label, sub }) => (
   <div className="card" style={{ padding:'26px 22px', textAlign:'center' }}>
-    <div style={{ fontFamily:'Cormorant Garamond,serif', fontSize:40, fontWeight:700, color:'#ffd166', lineHeight:1 }}>{value}</div>
-    <div style={{ fontFamily:'Inter,sans-serif', fontSize:11, fontWeight:600, letterSpacing:2, textTransform:'uppercase', color:'#00b4d8', marginTop:10 }}>{label}</div>
-    {sub && <div style={{ fontFamily:'Inter,sans-serif', fontSize:12, color:'#5a6a8a', marginTop:6, lineHeight:1.6 }}>{sub}</div>}
+    <div style={{ fontFamily:'Cormorant Garamond,serif', fontSize:40, fontWeight:700, color:'#38e1ff', lineHeight:1 }}>{value}</div>
+    <div style={{ fontFamily:'Inter,sans-serif', fontSize:11, fontWeight:600, letterSpacing:2, textTransform:'uppercase', color:'#38e1ff', marginTop:10 }}>{label}</div>
+    {sub && <div style={{ fontFamily:'Inter,sans-serif', fontSize:12, color:'#8b96b3', marginTop:6, lineHeight:1.6 }}>{sub}</div>}
   </div>
 );
 const Section = ({ id, children, bg }) => (
-  <section id={id} style={{ padding:'100px 28px', background: bg || '#080f1c' }}>
+  <section id={id} style={{ padding:'100px 28px', background: bg || '#0a1226' }}>
     <div style={{ maxWidth:1100, margin:'0 auto' }}>{children}</div>
   </section>
 );
@@ -167,9 +172,9 @@ const Galaxy = () => {
     <svg viewBox="-220 -220 440 440" style={{ width:'100%', height:'100%', opacity:0.28 }}>
       <defs>
         <radialGradient id="core">
-          <stop offset="0%" stopColor="#ffd166" stopOpacity="0.9"/>
-          <stop offset="35%" stopColor="#00b4d8" stopOpacity="0.4"/>
-          <stop offset="100%" stopColor="#04060f" stopOpacity="0"/>
+          <stop offset="0%" stopColor="#38e1ff" stopOpacity="0.9"/>
+          <stop offset="35%" stopColor="#38e1ff" stopOpacity="0.4"/>
+          <stop offset="100%" stopColor="#05070f" stopOpacity="0"/>
         </radialGradient>
       </defs>
       <circle cx="0" cy="0" r="32" fill="url(#core)">
@@ -177,10 +182,10 @@ const Galaxy = () => {
         <animate attributeName="opacity" values="0.35;0.65;0.35" dur="6s" repeatCount="indefinite"/>
       </circle>
       {arms.map((off,i) => (
-        <polyline key={i} points={pts(off)} fill="none" stroke="#00b4d8" strokeWidth="1.2" strokeOpacity="0.55" strokeLinecap="round"/>
+        <polyline key={i} points={pts(off)} fill="none" stroke="#38e1ff" strokeWidth="1.2" strokeOpacity="0.55" strokeLinecap="round"/>
       ))}
       {dots.map((d,i) => (
-        <circle key={i} cx={d.x.toFixed(2)} cy={d.y.toFixed(2)} r={d.r} fill="#ffd166" opacity={0.4+sr(i*23)*0.5}/>
+        <circle key={i} cx={d.x.toFixed(2)} cy={d.y.toFixed(2)} r={d.r} fill="#38e1ff" opacity={0.4+sr(i*23)*0.5}/>
       ))}
     </svg>
   );
@@ -222,50 +227,50 @@ const Nav = ({ active, go }) => {
       position:'fixed', top:0, left:0, right:0, zIndex:200,
       background: scrolled ? 'rgba(4,6,15,0.96)' : 'transparent',
       backdropFilter: scrolled ? 'blur(14px)' : 'none',
-      borderBottom: scrolled ? '1px solid rgba(0,180,216,0.18)' : 'none',
+      borderBottom: scrolled ? '1px solid rgba(56,225,255,0.18)' : 'none',
       transition:'all 0.3s ease', padding:'0 28px',
     }}>
       <div style={{ maxWidth:1180, margin:'0 auto', display:'flex', alignItems:'center', justifyContent:'space-between', height:62 }}>
-        <button onClick={() => go('home')} style={{ background:'none', border:'none', cursor:'pointer', fontFamily:'Cormorant Garamond,serif', fontSize:22, fontWeight:700, color:'#ffd166', letterSpacing:3 }}>
+        <button onClick={() => go('home')} style={{ background:'none', border:'none', cursor:'pointer', fontFamily:'Cormorant Garamond,serif', fontSize:22, fontWeight:700, backgroundImage:'linear-gradient(92deg,#38e1ff,#00E676)', WebkitBackgroundClip:'text', backgroundClip:'text', color:'transparent', letterSpacing:3 }}>
           QAG
         </button>
         <div className="hide-mobile" style={{ display:'flex', gap:24, alignItems:'center' }}>
           {NAVLINKS.map(l => (
-            <button key={l.id} onClick={() => go(l.id)} className="nav-link" style={{ color: active===l.id ? '#00b4d8' : '#6070a0' }}>
+            <button key={l.id} onClick={() => go(l.id)} className="nav-link" style={{ color: active===l.id ? '#38e1ff' : '#8b96b3' }}>
               {l.label}
             </button>
           ))}
           <div style={{ position:'relative' }}>
-            <button onClick={() => setDrop(!drop)} className="nav-link" style={{ color: drop ? '#00b4d8' : '#6070a0' }}>
+            <button onClick={() => setDrop(!drop)} className="nav-link" style={{ color: drop ? '#38e1ff' : '#8b96b3' }}>
               Site {drop ? '▴' : '▾'}
             </button>
             {drop && (
-              <div style={{ position:'absolute', top:'calc(100% + 14px)', right:0, minWidth:300, background:'rgba(4,6,15,0.98)', border:'1px solid rgba(0,180,216,0.25)', borderRadius:12, padding:'10px 0', boxShadow:'0 18px 40px rgba(0,0,0,0.55)', zIndex:300 }}>
+              <div style={{ position:'absolute', top:'calc(100% + 14px)', right:0, minWidth:300, background:'rgba(4,6,15,0.98)', border:'1px solid rgba(56,225,255,0.25)', borderRadius:12, padding:'10px 0', boxShadow:'0 18px 40px rgba(0,0,0,0.55)', zIndex:300 }}>
                 {SITELINKS.map(s => (
                   <a key={s.href} href={s.href} onClick={() => setDrop(false)} style={{ display:'block', padding:'9px 18px', textDecoration:'none', color:'#c6d2e2' }}>
                     <span style={{ display:'block', fontFamily:'Inter,sans-serif', fontSize:14, fontWeight:600, color:'#e9f4f8' }}>{s.label}</span>
-                    <span style={{ display:'block', fontFamily:'Inter,sans-serif', fontSize:12, color:'#6070a0' }}>{s.desc}</span>
+                    <span style={{ display:'block', fontFamily:'Inter,sans-serif', fontSize:12, color:'#8b96b3' }}>{s.desc}</span>
                   </a>
                 ))}
               </div>
             )}
           </div>
         </div>
-        <button onClick={() => setOpen(!open)} style={{ background:'none', border:'none', cursor:'pointer', color:'#8090b0', fontSize:22 }} className="nav-link">
+        <button onClick={() => setOpen(!open)} style={{ background:'none', border:'none', cursor:'pointer', color:'#8b96b3', fontSize:22 }} className="nav-link">
           {open ? '✕' : '☰'}
         </button>
       </div>
       {open && (
-        <div style={{ background:'rgba(4,6,15,0.98)', borderTop:'1px solid rgba(0,180,216,0.15)', padding:'20px 28px', display:'flex', flexDirection:'column', gap:16 }}>
+        <div style={{ background:'rgba(4,6,15,0.98)', borderTop:'1px solid rgba(56,225,255,0.15)', padding:'20px 28px', display:'flex', flexDirection:'column', gap:16 }}>
           {NAVLINKS.map(l => (
-            <button key={l.id} onClick={() => { go(l.id); setOpen(false); }} className="nav-link" style={{ color:'#8090b0', textAlign:'left' }}>
+            <button key={l.id} onClick={() => { go(l.id); setOpen(false); }} className="nav-link" style={{ color:'#8b96b3', textAlign:'left' }}>
               {l.label}
             </button>
           ))}
-          <div style={{ borderTop:'1px solid rgba(0,180,216,0.15)', paddingTop:14, fontFamily:'Inter,sans-serif', fontSize:11, letterSpacing:2, textTransform:'uppercase', color:'#4a6080' }}>Site</div>
+          <div style={{ borderTop:'1px solid rgba(56,225,255,0.15)', paddingTop:14, fontFamily:'Inter,sans-serif', fontSize:11, letterSpacing:2, textTransform:'uppercase', color:'#8b96b3' }}>Site</div>
           {SITELINKS.map(s => (
-            <a key={s.href} href={s.href} onClick={() => setOpen(false)} style={{ textDecoration:'none', color:'#8090b0', fontFamily:'Inter,sans-serif', fontSize:15 }}>
-              {s.label} <span style={{ color:'#4a6080', fontSize:12 }}>— {s.desc}</span>
+            <a key={s.href} href={s.href} onClick={() => setOpen(false)} style={{ textDecoration:'none', color:'#8b96b3', fontFamily:'Inter,sans-serif', fontSize:15 }}>
+              {s.label} <span style={{ color:'#8b96b3', fontSize:12 }}>— {s.desc}</span>
             </a>
           ))}
         </div>
@@ -276,38 +281,38 @@ const Nav = ({ active, go }) => {
 
 // ── HERO ──────────────────────────────────────────────────────────────────────
 const Hero = ({ go }) => (
-  <section id="home" style={{ position:'relative', minHeight:'100vh', display:'flex', alignItems:'center', justifyContent:'center', overflow:'hidden', background:'#04060f' }}>
+  <section id="home" style={{ position:'relative', minHeight:'100vh', display:'flex', alignItems:'center', justifyContent:'center', overflow:'hidden', background:'#05070f' }}>
     <Stars n={220}/>
     <div style={{ position:'absolute', width:'82vmin', height:'82vmin', top:'50%', left:'50%', transform:'translate(-50%,-50%)', animationName:'spiral-drift', animationDuration:'130s', animationTimingFunction:'linear', animationIterationCount:'infinite', pointerEvents:'none' }}>
       <Galaxy/>
     </div>
-    <div style={{ position:'absolute', width:500, height:500, borderRadius:'50%', background:'radial-gradient(circle, rgba(0,180,216,0.1) 0%, transparent 65%)', top:'50%', left:'50%', transform:'translate(-50%,-50%)', pointerEvents:'none', animationName:'glow-breathe', animationDuration:'8s', animationIterationCount:'infinite' }}/>
+    <div style={{ position:'absolute', width:500, height:500, borderRadius:'50%', background:'radial-gradient(circle, rgba(56,225,255,0.1) 0%, transparent 65%)', top:'50%', left:'50%', transform:'translate(-50%,-50%)', pointerEvents:'none', animationName:'glow-breathe', animationDuration:'8s', animationIterationCount:'infinite' }}/>
     <div style={{ position:'relative', zIndex:2, textAlign:'center', padding:'0 24px', maxWidth:980 }}>
       <Eyebrow>R&R Droids · Salineville, Ohio · ORCID 0009-0004-8370-3779</Eyebrow>
       <h1 className="hero-h1 fade-up" style={{
         fontFamily:'Cormorant Garamond,serif', fontWeight:700,
-        fontSize:'clamp(52px,8.5vw,104px)', lineHeight:1.0,
-        color:'#f0f0f8', margin:'0 0 32px',
-        textShadow:'0 0 100px rgba(0,180,216,0.2)',
+        fontSize:'clamp(40px,8.5vw,104px)', lineHeight:1.0,
+        color:'#dbe4ff', margin:'0 0 32px',
+        textShadow:'0 0 100px rgba(56,225,255,0.2)',
       }}>
         The Universe<br/>
-        <em style={{ color:'#ffd166', fontStyle:'italic' }}>is Not a Machine.</em><br/>
+        <em style={{ background:'linear-gradient(92deg,#38e1ff,#00E676)', WebkitBackgroundClip:'text', backgroundClip:'text', color:'transparent', fontStyle:'italic' }}>is Not a Machine.</em><br/>
         It is a Song.
       </h1>
-      <p className="fade-up-d1" style={{ fontSize:'clamp(16px,2.2vw,20px)', color:'#7080a0', maxWidth:680, margin:'0 auto 40px', lineHeight:1.8, fontFamily:'Inter,sans-serif' }}>
+      <p className="fade-up-d1" style={{ fontSize:'clamp(16px,2.2vw,20px)', color:'#8b96b3', maxWidth:680, margin:'0 auto 40px', lineHeight:1.8, fontFamily:'Inter,sans-serif' }}>
         Quantum Affinity Gravity proposes that the phenomena attributed to dark matter and dark energy arise from a single principle — gravity as the universe's drive toward coherence. Tested head-to-head on 175 SPARC galaxies, stress-tested in an open replication lab, and published here with its failures labeled as plainly as its wins.
       </p>
       <div className="fade-up-d2" style={{ display:'flex', gap:16, justifyContent:'center', flexWrap:'wrap', marginBottom:54 }}>
         <button onClick={() => go('validation')} style={{
           padding:'14px 40px', borderRadius:3,
-          background:'linear-gradient(135deg,#00b4d8,#0077a8)',
-          color:'white', border:'none', cursor:'pointer',
+          background:'linear-gradient(135deg,#38e1ff,#00E676)',
+          color:'#04121a', border:'none', cursor:'pointer',
           fontFamily:'Inter,sans-serif', fontSize:13, fontWeight:700, letterSpacing:2, textTransform:'uppercase',
         }}>See the Evidence</button>
         <button onClick={() => go('cosmology')} style={{
           padding:'14px 40px', borderRadius:3,
           background:'transparent',
-          color:'#ffd166', border:'1px solid rgba(255,209,102,0.4)', cursor:'pointer',
+          color:'#38e1ff', border:'1px solid rgba(56,225,255,0.4)', cursor:'pointer',
           fontFamily:'Inter,sans-serif', fontSize:13, fontWeight:700, letterSpacing:2, textTransform:'uppercase',
         }}>Cosmology</button>
       </div>
@@ -318,7 +323,7 @@ const Hero = ({ go }) => (
         <Stat value="169 / 175" label="Galaxies won vs MOND" sub="head-to-head, raw χ²"/>
       </div>
     </div>
-    <div style={{ position:'absolute', bottom:28, left:'50%', transform:'translateX(-50%)', color:'#2a3a6a', fontSize:11, letterSpacing:4, textTransform:'uppercase', fontFamily:'Inter,sans-serif' }}>
+    <div style={{ position:'absolute', bottom:28, left:'50%', transform:'translateX(-50%)', color:'#8b96b3', fontSize:11, letterSpacing:4, textTransform:'uppercase', fontFamily:'Inter,sans-serif' }}>
       scroll ↓
     </div>
   </section>
@@ -326,7 +331,7 @@ const Hero = ({ go }) => (
 
 // ── CRISIS ────────────────────────────────────────────────────────────────────
 const Crisis = () => (
-  <Section id="crisis" bg="linear-gradient(180deg,#04060f 0%,#07101c 100%)">
+  <Section id="crisis" bg="linear-gradient(180deg,#05070f 0%,#07101c 100%)">
     <Eyebrow color="#ff7b72">The Crisis in Physics</Eyebrow>
     <H2>Ninety-five percent of the universe is missing.</H2>
     <P>
@@ -371,7 +376,7 @@ const Theory = () => (
       Ψ_QAG(t) = Ψ_GR(t) + Σₙ Rⁿ · Ψ_GR(t − n·Δt_echo)
     </Eq>
     <div style={{ marginTop:36 }}>
-      <Eyebrow color="#ffd166">Parameter Registry — canonical values, November 2026</Eyebrow>
+      <Eyebrow color="#38e1ff">Parameter Registry — canonical values, November 2026</Eyebrow>
       <div style={{ overflowX:'auto' }}>
         <table className="reg-table">
           <thead>
@@ -393,7 +398,7 @@ const Theory = () => (
 
 // ── COSMOLOGY ─────────────────────────────────────────────────────────────────
 const Cosmology = () => (
-  <Section id="cosmology" bg="linear-gradient(180deg,#060d18 0%,#04060f 100%)">
+  <Section id="cosmology" bg="linear-gradient(180deg,#060d18 0%,#05070f 100%)">
     <Eyebrow>Cosmology</Eyebrow>
     <H2>The acceleration scale, the lithium problem, and the growth of structure.</H2>
     <P>
@@ -404,13 +409,13 @@ const Cosmology = () => (
     </Eq>
     <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(240px,1fr))', gap:16, margin:'30px 0' }}>
       <div className="card" style={{ padding:'24px 22px' }}>
-        <Tag color="#ffd166">Falsifiable</Tag>
+        <Tag color="#38e1ff">Falsifiable</Tag>
         <P style={{ marginTop:14, marginBottom:0, fontSize:14.5 }}>
           <Strong>The H₀ discriminator.</Strong> With Planck's H₀ the lemma lands −0.46% from the SPARC a₀; with the SH0ES value (73) it overshoots by +7.82%. And it predicts a₀ evolves as c·H(z)/(2e), where MOND holds a₀ constant. Either measurement, settled, can kill the lemma.
         </P>
       </div>
       <div className="card" style={{ padding:'24px 22px' }}>
-        <Tag color="#00b4d8">Derived</Tag>
+        <Tag color="#38e1ff">Derived</Tag>
         <P style={{ marginTop:14, marginBottom:0, fontSize:14.5 }}>
           <Strong>Lithium.</Strong> The BBN lithium discrepancy is addressed through the ⁷Be(d,p)2⁴He channel with cross-section scaled by ℰ = K_ASB^(−1/2), giving R_Li = K_ASB^(−1/4) ≈ 2.92 — now a derivation, not a fit. Residual: the full-network check of the ρ = ½ input is still unrun, and is labeled as such in the volume.
         </P>
@@ -445,8 +450,8 @@ const Validation = () => (
     <P>
       Two honest caveats belong next to those numbers. First, no model reaches χ² ≈ 1 on SPARC's published errors — the uncertainties exclude distance and inclination systematics, which our Monte Carlo work (below) shows move all models together without changing their ordering. Second, beating MOND on <Strong>total</Strong> χ² is not the whole story:
     </P>
-    <div className="card" style={{ padding:'28px 26px', borderColor:'rgba(255,209,102,0.3)', marginTop:10 }}>
-      <Eyebrow color="#ffd166">From the Replication Lab — the open problem, stated plainly</Eyebrow>
+    <div className="card" style={{ padding:'28px 26px', borderColor:'rgba(56,225,255,0.3)', marginTop:10 }}>
+      <Eyebrow color="#38e1ff">From the Replication Lab — the open problem, stated plainly</Eyebrow>
       <P style={{ fontSize:14.5 }}>
         An independent in-house replication programme re-derived every headline figure from the raw SPARC release (Phase 0: exact reproduction, byte-for-byte). It then asked the harder questions:
       </P>
@@ -468,7 +473,7 @@ const Validation = () => (
 
 // ── CLUSTERS ──────────────────────────────────────────────────────────────────
 const Clusters = () => (
-  <Section id="clusters" bg="linear-gradient(180deg,#04060f 0%,#07101c 100%)">
+  <Section id="clusters" bg="linear-gradient(180deg,#05070f 0%,#07101c 100%)">
     <Eyebrow>Clusters & Lensing</Eyebrow>
     <H2>Where the framework is tested hardest — and says so.</H2>
     <P>
@@ -485,7 +490,7 @@ const Clusters = () => (
 
 // ── ENGINEERING ───────────────────────────────────────────────────────────────
 const Engineering = () => (
-  <Section id="engineering" bg="#07101e">
+  <Section id="engineering" bg="#0a1226">
     <Eyebrow>Resonant Engineering</Eyebrow>
     <H2>The 0.70 MHz SAW device.</H2>
     <P>
@@ -505,36 +510,36 @@ const Engineering = () => (
 
 // ── PROGRAMS ──────────────────────────────────────────────────────────────────
 const PROGRAMS = [
-  { name:'QAG Nexus', tag:'Education · Live', color:'#00b4d8', url:'https://qag-nexus-qag-works.vercel.app',
+  { name:'QAG Nexus', tag:'Education · Live', color:'#38e1ff', url:'https://qag-nexus-qag-works.vercel.app',
     desc:'The teaching platform: a 4-module, 10-lesson course presenting the Standard Model side-by-side with QAG, with the flagship galactic-kinematics lesson (including its Python lab) free. Researcher tier gates the deep QAG modules.' },
-  { name:'Kinetics Lab', tag:'Interactive Data · Live', color:'#00b4d8', url:'https://qag-kinetics-lab-qag-works.vercel.app',
+  { name:'Kinetics Lab', tag:'Interactive Data · Live', color:'#38e1ff', url:'https://qag-kinetics-lab-qag-works.vercel.app',
     desc:'The SPARC evidence, explorable: rotation-curve fits for all 175 galaxies, the Bullet Cluster and Train Wreck case files, cosmology and kinetics demos — all figures are the team\'s own fits.' },
   { name:'QAG Virology', tag:'Research Demo · Live', color:'#7ee0a3', url:'https://qag-virology-demo-qag-works.vercel.app',
     desc:'The bio-acoustic research line — ultrasonic cavitation and viral-clearance modelling under QAG dynamics — behind a research-use-only safety gate on every page.' },
   { name:'Aestheria', tag:'AI Research · Live', color:'#c792ea', url:'https://aestheria-qag-works.vercel.app',
     desc:'Affy: a dual-hemisphere, offline-first AI assistant built on Base-12/QAG principles, with an Android client and a Python mind. Telemetry live; the token-gated deployment is the current build phase.' },
-  { name:'QACTS', tag:'Trading Platform · Live', color:'#ffd166', url:'https://qacts.vercel.app',
+  { name:'QACTS', tag:'Trading Platform · Live', color:'#38e1ff', url:'https://qacts.vercel.app',
     desc:'A web3 paper-trading and wallet-intelligence platform running the QAG "Grand Breath" regime model, with an on-device offline AI. Users sign every transaction in their own wallet — always.' },
   { name:'MeditationMedicine', tag:'Wellness · Live', color:'#7ee0a3', url:'https://meditation-medicine-9gclcg2pm-qag-works.vercel.app',
     desc:'Breath-pacing and visual-mode meditation tooling with a flicker-safety dialog, built from the Base-12 harmonic work.' },
-  { name:'Vajra Casting', tag:'Fabrication · Live', color:'#ffd166', url:'https://vajra-casting.vercel.app',
+  { name:'Vajra Casting', tag:'Fabrication · Live', color:'#38e1ff', url:'https://vajra-casting.vercel.app',
     desc:'The Base-12 Meditation Vajra: a 144 mm silicon-bronze casting project with full manufacturing files and a dual-size 3D viewer — the engineering programme in metal.' },
 ];
 const Programs = () => (
-  <Section id="programs" bg="linear-gradient(180deg,#07101e 0%,#04060f 100%)">
+  <Section id="programs" bg="linear-gradient(180deg,#0a1226 0%,#05070f 100%)">
     <Eyebrow>The Ecosystem</Eyebrow>
     <H2>One framework, many instruments.</H2>
     <P>
       The portal is the reference point; the work itself is distributed across live applications — teaching, data, simulation, AI, trading, fabrication. Each carries the same rule as this page: <Strong>honest badges, real data, no fake functionality</Strong>.
     </P>
-    <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(300px,1fr))', gap:18, marginTop:30 }}>
+    <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(260px,1fr))', gap:18, marginTop:30 }}>
       {PROGRAMS.map((p,i) => (
         <a key={i} href={p.url} target="_blank" rel="noreferrer" className="card prog-card" style={{ padding:'26px 24px', display:'block' }}>
           <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:12 }}>
-            <span style={{ fontFamily:'Cormorant Garamond,serif', fontSize:24, fontWeight:700, color:'#f0f0f8' }}>{p.name}</span>
+            <span style={{ fontFamily:'Cormorant Garamond,serif', fontSize:24, fontWeight:700, color:'#dbe4ff' }}>{p.name}</span>
             <Tag color={p.color}>{p.tag}</Tag>
           </div>
-          <p style={{ fontFamily:'Inter,sans-serif', fontSize:14, lineHeight:1.75, color:'#8b98b5', margin:0 }}>{p.desc}</p>
+          <p style={{ fontFamily:'Inter,sans-serif', fontSize:14, lineHeight:1.75, color:'#c6d2e2', margin:0 }}>{p.desc}</p>
         </a>
       ))}
     </div>
@@ -546,27 +551,27 @@ const Publications = () => (
   <Section id="publications" bg="#060c16">
     <Eyebrow>Publications & Data</Eyebrow>
     <H2>The record, in the open.</H2>
-    <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(300px,1fr))', gap:18, marginTop:10 }}>
+    <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(260px,1fr))', gap:18, marginTop:10 }}>
       <div className="card" style={{ padding:'28px 26px' }}>
-        <Tag color="#00b4d8">Preprint · CC BY 4.0</Tag>
-        <h3 style={{ fontFamily:'Cormorant Garamond,serif', fontSize:24, color:'#f0f0f8', margin:'16px 0 10px' }}>Empirical Validation of the AVI Law via SPARC Galaxy Rotation Curves</h3>
+        <Tag color="#38e1ff">Preprint · CC BY 4.0</Tag>
+        <h3 style={{ fontFamily:'Cormorant Garamond,serif', fontSize:24, color:'#dbe4ff', margin:'16px 0 10px' }}>Empirical Validation of the AVI Law via SPARC Galaxy Rotation Curves</h3>
         <P style={{ fontSize:14.5, marginBottom:14 }}>
           The programme's one item in the public scholarly registries: the AVI velocity law and the DDO 154 case study, published on Figshare (27 March 2026) and registered with ORCID and DataCite.
         </P>
-        <a href="https://doi.org/10.6084/m9.figshare.31871464.v1" target="_blank" rel="noreferrer" style={{ fontFamily:'JetBrains Mono,monospace', fontSize:13, color:'#ffd166' }}>
+        <a href="https://doi.org/10.6084/m9.figshare.31871464.v1" target="_blank" rel="noreferrer" style={{ fontFamily:'JetBrains Mono,monospace', fontSize:13, color:'#38e1ff', wordBreak:'break-all' }}>
           doi.org/10.6084/m9.figshare.31871464.v1 →
         </a>
       </div>
       <div className="card" style={{ padding:'28px 26px' }}>
-        <Tag color="#ffd166">Monograph · 65 pages</Tag>
-        <h3 style={{ fontFamily:'Cormorant Garamond,serif', fontSize:24, color:'#f0f0f8', margin:'16px 0 10px' }}>Quantum Affinity Gravity — The Unified Volume</h3>
+        <Tag color="#38e1ff">Monograph · 65 pages</Tag>
+        <h3 style={{ fontFamily:'Cormorant Garamond,serif', fontSize:24, color:'#dbe4ff', margin:'16px 0 10px' }}>Quantum Affinity Gravity — The Unified Volume</h3>
         <P style={{ fontSize:14.5, marginBottom:0 }}>
           The single-volume LaTeX publication: galactic validation, the Coherence-Floor Lemma, the derivation programme, clusters, and a Millennium Problems chapter that labels its own contents hypothesis / model / reframing / analogy — none of it presented as Clay-grade proof. Compiled clean at 65 pages; public deposit follows the author's per-item review.
         </P>
       </div>
       <div className="card" style={{ padding:'28px 26px' }}>
         <Tag color="#7ee0a3">Open Data</Tag>
-        <h3 style={{ fontFamily:'Cormorant Garamond,serif', fontSize:24, color:'#f0f0f8', margin:'16px 0 10px' }}>SPARC v3.0 & the Replication Lab</h3>
+        <h3 style={{ fontFamily:'Cormorant Garamond,serif', fontSize:24, color:'#dbe4ff', margin:'16px 0 10px' }}>SPARC v3.0 & the Replication Lab</h3>
         <P style={{ fontSize:14.5, marginBottom:0 }}>
           The v3.0 fit package is byte-identical to the original SPARC release (zero ingest drift), and the replication lab's artefacts — including the failed blind test and all 73 derivation-hunt systems — are preserved in the research record, not edited away. Data services (qag-data, qag-sparc-data) feed the live sites above.
         </P>
@@ -580,35 +585,35 @@ const Publications = () => (
 
 // ── ABOUT ─────────────────────────────────────────────────────────────────────
 const About = () => (
-  <Section id="about" bg="#07101e">
+  <Section id="about" bg="#0a1226">
     <Eyebrow>About</Eyebrow>
     <H2>Rodney A. Ripley Jr.</H2>
     <P>
       Independent theoretical physicist, lead researcher, and software developer working as <Strong>R&R Droids</Strong> (Ripley & Ripley Research) from Salineville, Ohio. The QAG programme — one year of full-time work across theory, simulation, and instrumentation — is built in the open with an AI research partner, and is documented here at the standard he set for it: <Strong>honest, properly derived, and compliant with accepted academic expectations</Strong>, including publishing the failures.
     </P>
-    <P style={{ marginBottom:0 }}>
-      Research contact: <a href="mailto:droiden.rr@gmail.com" style={{ color:'#ffd166' }}>droiden.rr@gmail.com</a> · ORCID <a href="https://orcid.org/0009-0004-8370-3779" target="_blank" rel="noreferrer" style={{ color:'#ffd166' }}>0009-0004-8370-3779</a> · Code: <a href="https://github.com/Sir-Ripley" target="_blank" rel="noreferrer" style={{ color:'#ffd166' }}>github.com/Sir-Ripley</a>
+    <P style={{ marginBottom:0, overflowWrap:'break-word' }}>
+      Research contact: <a href="mailto:droiden.rr@gmail.com" style={{ color:'#38e1ff' }}>droiden.rr@gmail.com</a> · ORCID <a href="https://orcid.org/0009-0004-8370-3779" target="_blank" rel="noreferrer" style={{ color:'#38e1ff', wordBreak:'break-all' }}>0009-0004-8370-3779</a> · Code: <a href="https://github.com/Sir-Ripley" target="_blank" rel="noreferrer" style={{ color:'#38e1ff' }}>github.com/Sir-Ripley</a>
     </P>
   </Section>
 );
 
 // ── FOOTER ────────────────────────────────────────────────────────────────────
 const Footer = () => (
-  <footer style={{ background:'#04060f', borderTop:'1px solid rgba(0,180,216,0.15)', padding:'44px 28px' }}>
+  <footer style={{ background:'#05070f', borderTop:'1px solid rgba(56,225,255,0.15)', padding:'44px 28px' }}>
     <div style={{ maxWidth:1100, margin:'0 auto' }}>
       <div style={{ display:'flex', flexWrap:'wrap', gap:10, marginBottom:26 }}>
         {SITELINKS.map(s => (
-          <a key={s.href} href={s.href} style={{ fontFamily:'Inter,sans-serif', fontSize:13, color:'#8090b0', textDecoration:'none', border:'1px solid rgba(0,180,216,0.18)', borderRadius:999, padding:'6px 14px' }}>{s.label}</a>
+          <a key={s.href} href={s.href} style={{ fontFamily:'Inter,sans-serif', fontSize:13, color:'#8b96b3', textDecoration:'none', border:'1px solid rgba(56,225,255,0.18)', borderRadius:999, padding:'6px 14px' }}>{s.label}</a>
         ))}
       </div>
       <div style={{ display:'flex', justifyContent:'space-between', flexWrap:'wrap', gap:20, alignItems:'center' }}>
         <div>
-          <div style={{ fontFamily:'Cormorant Garamond,serif', fontSize:20, fontWeight:700, color:'#ffd166', letterSpacing:2 }}>QAG</div>
-          <div style={{ fontFamily:'Inter,sans-serif', fontSize:12, color:'#4a6080', marginTop:6 }}>
+          <div style={{ fontFamily:'Cormorant Garamond,serif', fontSize:20, fontWeight:700, color:'#38e1ff', letterSpacing:2 }}>QAG</div>
+          <div style={{ fontFamily:'Inter,sans-serif', fontSize:12, color:'#8b96b3', marginTop:6 }}>
             Quantum Affinity Gravity · R&R Droids · Salineville, Ohio
           </div>
         </div>
-        <div style={{ fontFamily:'Inter,sans-serif', fontSize:12, color:'#4a6080', lineHeight:1.9, textAlign:'right' }}>
+        <div style={{ fontFamily:'Inter,sans-serif', fontSize:12, color:'#8b96b3', lineHeight:1.9, textAlign:'right' }}>
           <div>All QAG figures are the team's own fits, not independently validated.</div>
           <div>Portal rebuilt November 2026 from the canonical research record.</div>
         </div>
@@ -639,7 +644,7 @@ export default function QAGWebsite() {
     return () => window.removeEventListener('scroll', h);
   }, []);
   return (
-    <div style={{ background:'#04060f', minHeight:'100vh' }}>
+    <div style={{ background:'#05070f', minHeight:'100vh' }}>
       <GlobalStyle/>
       <Nav active={active} go={go}/>
       <Hero go={go}/>
